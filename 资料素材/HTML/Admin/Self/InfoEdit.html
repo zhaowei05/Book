@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>个人基本信息维护</title>
+		<link href="../css/css.css" rel="stylesheet" type="text/css" />
+		<script src="../../js/jquery.js" type="text/javascript"></script>
+	</head>
+	<body>
+        <table style="width:800px; margin-top:0px;" class="MyTable">
+            <tr class="titletr"><td colspan="2" style="text-align:center;">基本信息维护</td></tr>
+            <tr>
+                <td class="lefttd">用户名:</td>
+                <td>
+                    <span id="spanAccount">admin</span>
+                </td>
+            </tr>
+            <tr>
+                <td class="lefttd">真实姓名:</td>
+                <td>
+                    <input name="txtRealName" type="text" value="高军" id="txtRealName" />
+                    <span id="spanRealName" style=" color:Red;"></span>
+                </td>
+            </tr>
+            <tr>
+                <td class="lefttd">联系电话:</td>
+                <td>
+                    <input name="txtPhone" type="text" value="13654122353" id="txtPhone" />
+                    <span id="spanPhone" style=" color:Red;"></span>
+                </td>
+            </tr>
+            <tr>
+                <td class="lefttd">&nbsp;</td>
+                <td>
+                    <input type="submit" name="btUpdate" value="修改信息" id="btUpdate" />
+                    
+                </td>
+            </tr>
+        </table>
+
+	</body>
+</html>

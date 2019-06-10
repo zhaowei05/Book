@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>图书修改</title>
+		<link href="../css/css.css" rel="stylesheet" type="text/css" />
+		<link href="../css/jquery-ui.css" rel="stylesheet" type="text/css" />
+	    <style type="text/css">
+	        div{ overflow:visible;}
+	        .lefttd{width:100px; text-align:right;}
+	        .righttd{width:400px; }
+	        .red{ color:Red;}
+	    </style>
+	    <script src="../../js/jquery.js" type="text/javascript"></script>
+	    <script src="../../kindeditor/kindeditor-all.js" type="text/javascript"></script>
+	    <script src="../../kindeditor/lang/zh-CN.js" type="text/javascript"></script>
+	    <script src="../../js/jquery-ui.js" type="text/javascript"></script>
+	    <script src="../../js/jquery.ui.datepicker-zh-CN.js" type="text/javascript"></script>
+
+	    <script type="text/javascript">
+	        $(function () {
+	            var jsonType = [{"TypeId":1,"TypeName":"计算机与互联网","ParentId":0},{"TypeId":2,"TypeName":".net","ParentId":1},{"TypeId":3,"TypeName":"c++","ParentId":1},{"TypeId":4,"TypeName":"java","ParentId":1},{"TypeId":5,"TypeName":"php","ParentId":1},{"TypeId":6,"TypeName":"文学","ParentId":0},{"TypeId":7,"TypeName":"中国名著","ParentId":6},{"TypeId":8,"TypeName":"外国名著","ParentId":6},{"TypeId":11,"TypeName":"历史小说","ParentId":9}];
+	            var oneType = 6;
+	            var twoType = 8;
+	            //绑定一级分类
+	            function BindOneType()
+	            {
+	                $("#ddlOneType").append("<option value=''>--全部--</option>");
+				    for(var i = 0;i< jsonType.length;i++)
+				    {
+	                    if(jsonType[i].ParentId == 0)
+	                    {
+	                        if(jsonType[i].TypeId == oneType)
+	                            $("#ddlOneType").append("<option selected='selected' value='"+jsonType[i].TypeId+"'>"+jsonType[i].TypeName+"</option>");
+	                        else
+	                            $("#ddlOneType").append("<option value='"+jsonType[i].TypeId+"'>"+jsonType[i].TypeName+"</option>");
+	                    }
+				    }
+	            }
+	            //绑定二级分类
+	            function BindTwoType()
+	            {
+	                $("#ddlTwoType").append("<option value=''>--全部--</option>");
+	                if($("#ddlOneType").val() != "" && $("#ddlOneType").val() != "0")
+	                {
+	                    var parentId = $("#ddlOneType").val();
+	                    if(parentId == "")
+	                        return;
+	                    for(var i = 0;i< jsonType.length;i++)
+	                    {
+	                         if(jsonType[i].ParentId == parentId)
+	                         {
+	                            if(jsonType[i].TypeId == twoType)
+	                                $("#ddlTwoType").append("<option selected='selected' value='"+jsonType[i].TypeId+"'>"+jsonType[i].TypeName+"</option>");
+	                            else
+	                                $("#ddlTwoType").append("<option value='"+jsonType[i].TypeId+"'>"+jsonType[i].TypeName+"</option>");
+	                         }
+	                    }               
+	                }
+	            }
+	            //检查图书类型
+	            function CheckType() {
+	                if ($("#hdOneType").val() == "" || $("#hdTwoType").val() == "") {
+	                    $("#spanType").html("请选择图书类型!");
+	                    return false;
+	                }
+	                else {
+	                    $("#spanType").html("");
+	                    return true;
+	                }
+	            }
+	            //检查条码
+	            function CheckCode() {
+	                if ($("#txtBookCode").val() == "") {
+	                    $("#spanCode").html("请填写图书条码!");
+	                    return false;
+	                }
+	                else if($("#txtBookCode").val().length > 13)
+	                {
+	                     $("#spanCode").html("条码长度不能超过13!");
+	                    return false;               
+	                }
+	                else {
+	                    $("#spanCode").html("");
+	                    return true;
+	                }
+	            }
+	            //检查图书名称
+	            function CheckName() {
+	                if ($("#txtBookName").val() == "") {
+	                    $("#spanName").html("请填写图书名称!");
+	                    return false;
+	                }
+	                else {
+	                    $("#spanName").html("");
+	                    return true;
+	                }
+	            } 
+	            //检查图书作者
+	            function CheckAuthor(){
+	                 if ($("#txtBookAuthor").val() == "") {
+	                    $("#spanAuthor").html("请填写图书作者!");
+	                    return false;
+	                }
+	                else {
+	                    $("#spanAuthor").html("");
+	                    return true;
+	                }       
+	            }     
+	            //检查图书价格
+	            function CheckPrice(){
+	                 if ($("#txtBookPrice").val() == "") {
+	                    $("#spanPrice").html("请填写图书价格!");
+	                    return false;
+	                }
+	                else if(isNaN($("#txtBookPrice").val()) == true){
+	                     $("#spanPrice").html("图书价格必须是数字!");
+	                    return false;               
+	                }
+	                else {
+	                    $("#spanPrice").html("");
+	                    return true;
+	                }            
+	            }
+	            //检查图书折扣
+	            function CheckDiscount(){
+	                  if ($("#txtBookDisCount").val() == "") {
+	                    $("#spanDiscount").html("请填写图书折扣!");
+	                    return false;
+	                }
+	                else if(isNaN($("#txtBookDisCount").val()) == true){
+	                     $("#spanDiscount").html("图书折扣必须是数字!");
+	                    return false;               
+	                }
+	                else if(parseFloat($("#txtBookDisCount").val()) <=0 || parseFloat($("#txtBookDisCount").val()) > 1){
+	                     $("#spanDiscount").html("图书折扣必须是0-1之间的小数!");
+	                    return false;               
+	                }
+	                else {
+	                    $("#spanDiscount").html("");
+	                    return true;
+	                }           
+	            }
+	            //检查出版社
+	            function CheckPress(){
+	                 if ($("#txtBookPress").val() == "") {
+	                    $("#spanPress").html("请填写图书出版社!");
+	                    return false;
+	                }
+	                else {
+	                    $("#spanPress").html("");
+	                    return true;
+	                }           
+	            }
+	            //检查图书出版时间
+	            function CheckPressTime(){
+	                var reg = /^((19\d{2})|(20\d{2}))-(0?[1-9]|1[0-2])-(0?[1-9]|[1-2]\d|3[0-1])$/;
+	                if ($("#txtPressTime").val() == "") {
+	                    $("#spanPressTime").html("请填写图书出版时间!");
+	                    return false;
+	                }
+	                else if(reg.test($("#txtPressTime").val()) == false){
+	                     $("#spanPressTime").html("出版时间格式不正确!");
+	                    return false;               
+	                }
+	                else {
+	                    $("#spanPressTime").html("");
+	                    return true;
+	                }           
+	            }
+	            //检查上传图片
+	            function CheckUploadImg(){
+	                  if ($("#hdPicPath").val() == "") {
+	                    $("#spanUploadInfo").html("请选择图书的上传图片!");
+	                    return false;
+	                }
+	                else {
+	                    //$("#spanUploadInfo").html("");
+	                    return true;
+	                }           
+	            }
+	            //检查图书介绍
+	//            function CheckRemark(){
+	//                  if ($("#txtBookRemark").val() == "") {
+	//                    $("#spanRemark").html("请填写图书介绍!");
+	//                    return false;
+	//                }
+	//                else {
+	//                    $("#spanRemark").html("");
+	//                    return true;
+	//                }           
+	//            }
+	            BindOneType();
+	            BindTwoType();
+	            //一级分类切换的时候重新绑定二级分类
+	            $("#ddlOneType").change(function(){
+	                $("#ddlTwoType").html("");
+	                $("#ddlTwoType").append("<option value=''>--全部--</option>");
+	                var parentId = $("#ddlOneType").val();
+	                $("#hdOneType").val(parentId);
+	                $("#hdTwoType").val("");
+	                if(parentId == "")
+	                    return;
+	                for(var i = 0;i< jsonType.length;i++)
+	                {
+	                     if(jsonType[i].ParentId == parentId)
+	                     {
+	                        $("#ddlTwoType").append("<option value='"+jsonType[i].TypeId+"'>"+jsonType[i].TypeName+"</option>");
+	                     }
+	                }                 
+	            })
+	            //选择二级分类的时候给隐藏框赋值
+	            $("#ddlTwoType").change(function(){
+	                var typeId = $("#ddlTwoType").val();
+	                $("#hdTwoType").val(typeId);
+	            })
+	
+	            $("#btUpload").click(function () {
+	                $("#form1").attr("target", "frameFile");
+	            })
+	
+	            $("#btUpdate").click(function () {
+	                if (CheckType() & CheckCode() & CheckName() & CheckAuthor() & CheckPrice() & CheckDiscount() & CheckPress() & 
+	                CheckPressTime() & CheckUploadImg())
+	                {
+	                    $("#form1").attr("target", "_self");
+	                    return true;
+	                }
+	                else
+	                    return false;
+	                
+	            })
+	
+	            //加载KindEditor编辑器
+	            KindEditor.ready(function (k) {
+	                KindEditor.options.filterMode = false; //关闭过滤模式，保留所有标签
+	                window.editor = k.create('#txtBookRemark', {
+	                    allowImageUpload: false,
+	                    allowFlashUpload: false,
+	                    allowMediaUpload: false,
+	                    allowFileUpload: false
+	                });           
+	            })
+	            //加载时间选择控件
+				$("#txtPressTime").datepicker({inline: true,
+						changeMonth:true, //显示选择月份的下拉列表
+						changeYear:true,//显示选择年份的下拉列表
+						showOtherMonths: true, //显示上月和下月空出来的日期
+						selectOtherMonths: true, //可以显示上月和下月空出来的日期
+						showWeek:false,//显示日期对应的星期
+						//showButtonPanel:true,//显示"关闭"按钮面板
+						//closeText:"关闭",//设置关闭按钮的文本
+						yearRange:'1950:2020',//设置年份的范围
+						dateFormat:'yy-mm-dd',//设置显示在文本框中的日期格式
+						//showAnim:"slideDown"//设置显示或隐藏日期选择窗口的方式。可以设置的方式有："show"、"slideDown"、"fadeIn"
+				});
+	
+	
+	
+	        })
+	
+	    </script>
+
+	</head>
+	<body>
+        <table style="width:1000px; margin-top:0px;" class="MyTable">
+            <tr class="titletr"><td colspan="4" style="text-align:center;">图书修改</td></tr>
+            <tr>
+                <td class="lefttd">图书类型:</td>
+                <td class="righttd">
+                    <select name="ddlOneType" id="ddlOneType">
+
+</select>
+                    <input type="hidden" name="hdOneType" id="hdOneType" value="6" />
+                    <select name="ddlTwoType" id="ddlTwoType">
+
+</select>
+                    <input type="hidden" name="hdTwoType" id="hdTwoType" value="8" />
+                    <span id="spanType" class="red"></span>
+                </td>
+                <td class="lefttd">条码:</td>
+                <td class="righttd">
+                    <input name="txtBookCode" type="text" value="9787515907222" id="txtBookCode" />
+                    <span id="spanCode" class="red"></span>
+                </td>
+            </tr>
+            <tr>
+                <td class="lefttd">图书名称:</td>
+                <td class="righttd">
+                    <input name="txtBookName" type="text" value="格列佛游记" id="txtBookName" />
+                    <span id="spanName" class="red"></span>
+                </td>
+                <td class="lefttd">图书作者:</td>
+                <td class="righttd">
+                    <input name="txtBookAuthor" type="text" value="斯威夫特" id="txtBookAuthor" />
+                    <span id="spanAuthor" class="red"></span>
+                </td>
+            </tr>
+            <tr>
+                <td class="lefttd">图书价格:</td>
+                <td class="righttd">
+                    <input name="txtBookPrice" type="text" value="34" id="txtBookPrice" />
+                    <span id="spanPrice" class="red"></span>
+                </td>
+                <td class="lefttd">图书折扣:</td>
+                <td class="righttd">
+                    <input name="txtBookDisCount" type="text" value="0.5" id="txtBookDisCount" />
+                    <span id="spanDiscount" class="red"></span>
+                </td>
+            </tr>
+            <tr>
+                <td class="lefttd">出版社:</td>
+                <td class="righttd">
+                    <input name="txtBookPress" type="text" value="人民邮电出版社" id="txtBookPress" />
+                    <span id="spanPress" class="red"></span>
+                </td>
+                <td class="lefttd">出版时间:</td>
+                <td class="righttd">
+                    <input name="txtPressTime" type="text" value="2011-02-01" id="txtPressTime" />
+                    <span id="spanPressTime" class="red"></span>
+                </td>
+            </tr>
+            <tr>
+                <td class="lefttd">图片:</td>
+                <td colspan="3">
+                    <input type="file" name="myFile" id="myFile" />
+                    <input type="submit" name="btUpload" value="上传" id="btUpload" />
+                    <span id="spanUploadInfo" class="red"><a target='_blank' href='../../uploadfile/9787515907222.jpg'>查看</a></span>
+                    <input type="hidden" name="hdPicPath" id="hdPicPath" value="9787515907222.jpg" />             
+                </td>
+            </tr>
+            <tr>
+                <td class="lefttd">图书介绍:</td>
+                <td colspan="3">
+                    <textarea name="txtBookRemark" rows="2" cols="20" id="txtBookRemark" style="height:400px;width:100%;">
+</textarea>
+                    <br />
+                    <span id="spanRemark" class="red"></span>
+                </td>
+            </tr>
+            <tr>
+                <td class="lefttd">&nbsp;</td>
+                <td colspan="3">
+                    <input type="submit" name="btUpdate" value="修改图书" id="btUpdate" />
+                    
+                </td>
+            </tr>
+        </table>
+		
+	</body>
+</html>

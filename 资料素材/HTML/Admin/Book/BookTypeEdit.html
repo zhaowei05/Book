@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>图书类型修改</title>
+		<link href="../css/css.css" rel="stylesheet" type="text/css" />
+	</head>
+	<body>
+        <table style="width:800px; margin-top:0px;" class="MyTable">
+            <tr class="titletr"><td colspan="2" style="text-align:center;">图书类型修改</td></tr>
+            <tr>
+                <td class="lefttd">父级分类:</td>
+                <td>
+                    <select name="ddlParent" id="ddlParent">
+						<option selected="selected" value="0">顶级分类</option>
+						<option value="1">计算机与互联网</option>
+						<option value="6">文学</option>
+					</select>
+                </td>
+            </tr>
+            <tr>
+                <td class="lefttd">分类名称:</td>
+                <td>
+                    <input name="txtName" type="text" value="计算机与互联网" id="txtName" />
+                    <span id="spanName" style=" color:Red;"></span>
+                </td>
+            </tr>
+            <tr>
+                <td class="lefttd">&nbsp;</td>
+                <td>
+                    <input type="submit" name="btUpdate" value="类别修改" id="btUpdate" />
+                    
+                </td>
+            </tr>
+        </table>
+
+	</body>
+</html>

@@ -1,0 +1,26 @@
+﻿/*首页样式*/
+#bodyBanner{ width:1200px; margin:6px auto; clear:both; height:auto; overflow:hidden;}
+#slaeTop{ width:230px; float:left; margin-right:5px; padding:5px; border:solid 1px #eaeaea;}
+#discountTop{ width:230px; float:left; margin-left:5px; padding:5px; border:solid 1px #eaeaea;}
+#adPPT{ width:706px; height:304px; float:left;}
+#adPPT img{ width:706px; height:304px;}
+#bodyBanner .bookImg{ width:110px; overflow:hidden; float:left;}
+#bodyBanner .bookTxt{ width:110px; float:left; margin-top:16px; line-height:24px;}
+#bodyBanner .bookTxt div{ clear:both;}
+#bodyBanner .bookTxt a{ color:Black; text-decoration:none;}
+#bodyBanner .bookItem{ clear:both; height:auto; overflow:hidden; margin-top:12px;}
+#bodyBanner .bookPrice{ color:Red; font-size:12px; }
+
+
+#newBook{width:1200px; margin:10px auto; clear:both; height:auto; overflow:hidden;}
+#newBookTitle{ height:30px; line-height:30px;}
+#newBookList{ height:auto; overflow:hidden; margin-top:20px;}
+.bookListItem{ width:200px; float:left; text-align:center; margin-top:10px; margin-bottom:10px;}
+.bookListImg{ height:200px;}
+.bookListName{ line-height:24px;}
+.bookListName a{ color:Black; text-decoration:none;}
+.bookListPrice{ line-height:24px; color:Red; font-size:14px; font-family:"Microsoft YaHei"}
+
+#typeBook{width:1200px; margin:0px auto; clear:both; height:auto; overflow:hidden;}
+.typeBookTitle{ height:30px; line-height:30px;}
+#typeBookList{height:auto; overflow:hidden; margin-top:20px;}

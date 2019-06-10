@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>个人密码维护</title>
+		<link href="../css/css.css" rel="stylesheet" type="text/css" />
+	</head>
+	<body>
+        <table style="width:800px; margin-top:6px;" class="MyTable">
+            <tr class="titletr"><td colspan="2" style="text-align:center;">个人密码维护</td></tr>
+            <tr>
+                <td class="lefttd">原始密码:</td>
+                <td>
+                    <input name="txtOldPwd" type="password" id="txtOldPwd" />
+                    <span id="spanOldPwd" style=" color:Red;"></span>
+                </td>
+            </tr>
+            <tr>
+                <td class="lefttd">新密码:</td>
+                <td>
+                    <input name="txtNewPwd" type="password" id="txtNewPwd" />
+                    <span id="spanNewPwd" style=" color:Red;"></span>
+                </td>
+            </tr>
+            <tr>
+                <td class="lefttd">确认密码:</td>
+                <td>
+                    <input name="txtConfirmPwd" type="password" id="txtConfirmPwd" />
+                    <span id="spanConfirmPwd" style=" color:Red;"></span>
+                </td>
+            </tr>
+            <tr>
+                <td class="lefttd">&nbsp;</td>
+                <td>
+                    <input type="submit" name="btUpdate" value="修改密码" id="btUpdate" />      
+                </td>
+            </tr>
+        </table>
+		
+	</body>
+</html>

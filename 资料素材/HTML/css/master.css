@@ -1,0 +1,62 @@
+﻿/*母版样式*/
+#topMember{ height:30px; background-color:#f9f9f9; border-bottom:solid 1px #f2f2f2}
+#topMemberInner{height:30px; line-height:30px; width:1200px; margin:0px auto; text-align:right;
+                 color:#646464;}
+#topMemberInner a{ text-decoration:none; color:Red;}
+#search{width:1200px; margin:0px auto; height:120px;}
+#search #searchLeft{ width:300px; height:120px; float:left; background:url(../img/logo.jpg) no-repeat left center;}
+#search #searchCenter{ width:700px; height:120px; line-height:120px; float:left;}
+#search #searchRight{ width:200px; height:120px; float:left;}
+#search #searchCenter #searchContainer{ width:700px; margin-top:45px; height:40px; line-height:40px;}
+#search #searchCenter #searchContainer #txtKey{width:400px; height:36px; line-height:36px;
+                              font-size:14px; padding-left:8px; padding-right:8px; font-family:"Microsoft YaHei"; float:left; margin-right:4px;}
+#search #searchCenter #searchContainer select{ width:140px; height:40px; line-height:40px; 
+                              font-size:14px; padding-left:8px; padding-right:8px; font-family:"Microsoft YaHei"; float:left; margin-right:4px;} 
+                                             
+#search #searchCenter #searchContainer #btSearch{ display:block; width:100px; height:40px; line-height:40px; float:left; font-family:"Microsoft YaHei"; 
+                                  font-size:16px; text-decoration:none; text-align:center; background-color:#ff2832; color:White;}
+                                                  
+#search #searchRight #aCart{ display:block; margin-top:45px; width:100px; height:40px; line-height:40px; float:left; font-family:"Microsoft YaHei"; 
+                                  font-size:16px; text-decoration:none; text-align:center; background-color:#ff2832; color:White;}
+#search #searchRight #aOrder{display:block; margin-top:45px; width:100px; height:40px; line-height:40px; float:left; font-family:"Microsoft YaHei";
+                             font-size:16px; text-decoration:none; text-align:center; background-color:#f6f6f6; color:Black;}
+#daohang{ height:42px;}
+#dhHref{ height:40px; line-height:40px; width:1200px; margin:0px auto; }
+
+#dhHref>a{ display:block; width:120px; float:left; height:40px; line-height:40px; text-decoration:none; font-family:"Microsoft YaHei"; 
+           font-size:16px; color:#323232;  text-align:center;}
+#dhHref #divAllType{width:256px;height:40px; line-height:40px; float:left;}
+#dhHref #aAllType{display:block;width:256px; height:40px; background-color:#ff2832;  text-align:left; color:White;
+                  background-image:url(../img/arrow.png); background-position:210px center; background-repeat:no-repeat;
+                  text-decoration:none; font-size:16px; font-family:"Microsoft YaHei";}
+#dhHref #aAllType #spanAllType{ margin-left:54px;}
+
+#dhHref #divAllType #divTypeShow{ position:relative; background-color:#f9f9f9; padding:6px; height:auto; overflow:hidden; display:none; z-index:101;}
+#dhHref #divAllType #divTypeShow .menuOneType{ height:40px; line-height:40px;  clear:both;}
+#dhHref #divAllType #divTypeShow .menuOneType a{text-decoration:none; font-size:16px;  font-weight:bold;
+                                                 text-decoration:none; font-family:"Microsoft YaHei"; color:#323232;  }
+                                                 
+#dhHref #divAllType #divTypeShow .menuTwoType{ width:120px; float:left; height:40px; line-height:40px; text-align:center; }
+#dhHref #divAllType #divTypeShow .menuTwoType a{text-decoration:none; font-size:14px; 
+                                                 text-decoration:none; font-family:"Microsoft YaHei"; color:#323232;  }
+
+#dhBottom{ height:2px; background-color:#ff2832;}
+
+#foot{ margin-top:30px;}
+#footHr{height:2px; background-color:#ff2832;}
+#footImg{ height:80px; background-color:#fafafa; border-bottom:solid 1px #ebebeb;}
+#footImgItems{ width:1200px; margin:0px auto; height:80px; }
+#footZpImg,#footFangxin,#foot625,#footShangmen{ width:300px; float:left; height:80px; }
+#footZpImg{ background:url(../img/footImg1.jpg) no-repeat 40px center;}
+#footFangxin{ background:url(../img/footImg2.jpg) no-repeat 40px center;}
+#foot625{ background:url(../img/footImg3.jpg) no-repeat 40px center;}
+#footShangmen{ background:url(../img/footImg4.jpg) no-repeat 40px center;}
+.footPinkFont{ margin-left:106px; margin-top:15px;}
+.footPinkFont div{color:#ff2832; font-size:16px; font-family:"Microsoft YaHei"; height:26px; line-height:26px;}
+
+#footLink{width:1200px; margin:0px auto; margin-top:10px;}
+.footLinkItem{ width:200px; text-align:center; float:left; height:28px; line-height:28px;}
+.footLinkItem div{ color:#323232; font-family:"Microsoft YaHei"; font-size:14px; font-weight:bold;}
+.footLinkItem ul{ margin:0px; padding:0px; list-style-type:none;}
+.footLinkItem li{ height:26px; line-height:26px; text-align:center;}
+.footLinkItem li a{ text-decoration:none; color:#7d7d7d;}

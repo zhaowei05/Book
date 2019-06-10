@@ -1,0 +1,223 @@
+
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head><title>
+	图书列表
+</title><link href="../css/css.css" rel="stylesheet" type="text/css" />
+    <script src="../../js/jquery.js" type="text/javascript"></script>
+    <script type="text/javascript">
+        var jsonType = [{"TypeId":1,"TypeName":"计算机与互联网","ParentId":0},{"TypeId":2,"TypeName":".net","ParentId":1},{"TypeId":3,"TypeName":"c++","ParentId":1},{"TypeId":4,"TypeName":"java","ParentId":1},{"TypeId":5,"TypeName":"php","ParentId":1},{"TypeId":6,"TypeName":"文学","ParentId":0},{"TypeId":7,"TypeName":"中国名著","ParentId":6},{"TypeId":8,"TypeName":"外国名著","ParentId":6},{"TypeId":11,"TypeName":"历史小说","ParentId":9}];
+        var oneType = 0;
+        var twoType = 0;
+        //绑定一级分类
+        function BindOneType()
+        {
+            $("#ddlOneType").append("<option value='0'>--全部--</option>");
+			for(var i = 0;i< jsonType.length;i++)
+			{
+                if(jsonType[i].ParentId == 0)
+                {
+                    if(jsonType[i].TypeId == oneType)
+                        $("#ddlOneType").append("<option selected='selected' value='"+jsonType[i].TypeId+"'>"+jsonType[i].TypeName+"</option>");
+                    else
+                        $("#ddlOneType").append("<option value='"+jsonType[i].TypeId+"'>"+jsonType[i].TypeName+"</option>");
+                }
+			}
+        }
+        //绑定二级分类
+        function BindTwoType()
+        {
+            $("#ddlTwoType").append("<option value='0'>--全部--</option>");
+            if($("#ddlOneType").val() != "" && $("#ddlOneType").val() != "0")
+            {
+                var parentId = $("#ddlOneType").val();
+                if(parentId == "")
+                    return;
+                for(var i = 0;i< jsonType.length;i++)
+                {
+                     if(jsonType[i].ParentId == parentId)
+                     {
+                        if(jsonType[i].TypeId == twoType)
+                            $("#ddlTwoType").append("<option selected='selected' value='"+jsonType[i].TypeId+"'>"+jsonType[i].TypeName+"</option>");
+                        else
+                            $("#ddlTwoType").append("<option value='"+jsonType[i].TypeId+"'>"+jsonType[i].TypeName+"</option>");
+                     }
+                }               
+            }
+        }
+
+        $(function(){
+            BindOneType();
+            BindTwoType();
+            //一级分类切换的时候重新绑定二级分类
+            $("#ddlOneType").change(function(){
+                $("#ddlTwoType").html("");
+                $("#ddlTwoType").append("<option value='0'>--全部--</option>");
+                var parentId = $("#ddlOneType").val();
+                $("#hdOneType").val(parentId);
+                $("#hdTwoType").val("");
+                if(parentId == "")
+                    return;
+                for(var i = 0;i< jsonType.length;i++)
+                {
+                     if(jsonType[i].ParentId == parentId)
+                     {
+                        $("#ddlTwoType").append("<option value='"+jsonType[i].TypeId+"'>"+jsonType[i].TypeName+"</option>");
+                     }
+                }                 
+            })
+            //选择二级分类的时候给隐藏框赋值
+            $("#ddlTwoType").change(function(){
+                var typeId = $("#ddlTwoType").val();
+                $("#hdTwoType").val(typeId);
+            })
+
+        })
+    </script>
+</head>
+<body>
+    <form method="post" action="./BookList.aspx" id="form1">
+<div class="aspNetHidden">
+<input type="hidden" name="__EVENTTARGET" id="__EVENTTARGET" value="" />
+<input type="hidden" name="__EVENTARGUMENT" id="__EVENTARGUMENT" value="" />
+<input type="hidden" name="__VIEWSTATE" id="__VIEWSTATE" value="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" />
+</div>
+
+<script type="text/javascript">
+//<![CDATA[
+var theForm = document.forms['form1'];
+if (!theForm) {
+    theForm = document.form1;
+}
+function __doPostBack(eventTarget, eventArgument) {
+    if (!theForm.onsubmit || (theForm.onsubmit() != false)) {
+        theForm.__EVENTTARGET.value = eventTarget;
+        theForm.__EVENTARGUMENT.value = eventArgument;
+        theForm.submit();
+    }
+}
+//]]>
+</script>
+
+
+<div class="aspNetHidden">
+
+	<input type="hidden" name="__VIEWSTATEGENERATOR" id="__VIEWSTATEGENERATOR" value="07A3B74B" />
+	<input type="hidden" name="__VIEWSTATEENCRYPTED" id="__VIEWSTATEENCRYPTED" value="" />
+</div>
+    <div style=" height:30px; line-height:30px; text-align:center;">
+        类别：
+        <select name="ddlOneType" id="ddlOneType">
+
+</select>
+        <select name="ddlTwoType" id="ddlTwoType">
+
+</select>
+        书名：
+        <input name="txtName" type="text" id="txtName" />
+        <input type="submit" name="btSearch" value="搜索" id="btSearch" />
+        <a href="BookAdd.aspx">添加</a>
+        <input type="hidden" name="hdOneType" id="hdOneType" value="0" />
+        <input type="hidden" name="hdTwoType" id="hdTwoType" value="0" />
+    </div>
+    <div>
+        <div>
+	<table class="MyTable" cellspacing="0" rules="all" border="1" id="gvBook" style="width:98%;border-collapse:collapse;">
+		<tr class="titletr">
+			<th scope="col">类型</th><th scope="col">条码</th><th scope="col">书名</th><th scope="col">价格</th><th scope="col">折扣</th><th scope="col">销售数量</th><th scope="col">操作</th>
+		</tr><tr>
+			<td>外国名著</td><td>9787515907222</td><td>格列佛游记</td><td>34</td><td>0.5</td><td>33</td><td style="width:100px;">
+                        <a href='BookEdit.aspx?BookId=90'>编辑</a>
+                        <a onclick="return confirm(&#39;确定要删除吗？&#39;);" id="gvBook_LinkButton1_0" href="javascript:__doPostBack(&#39;gvBook$ctl02$LinkButton1&#39;,&#39;&#39;)">删除</a>                   
+                    </td>
+		</tr><tr>
+			<td>外国名著</td><td>9787515907277</td><td>所罗门王的宝藏</td><td>33</td><td>0.5</td><td>22</td><td style="width:100px;">
+                        <a href='BookEdit.aspx?BookId=89'>编辑</a>
+                        <a onclick="return confirm(&#39;确定要删除吗？&#39;);" id="gvBook_LinkButton1_1" href="javascript:__doPostBack(&#39;gvBook$ctl03$LinkButton1&#39;,&#39;&#39;)">删除</a>                   
+                    </td>
+		</tr><tr>
+			<td>外国名著</td><td>9787515906935</td><td>伊索寓言</td><td>56</td><td>0.5</td><td>11</td><td style="width:100px;">
+                        <a href='BookEdit.aspx?BookId=88'>编辑</a>
+                        <a onclick="return confirm(&#39;确定要删除吗？&#39;);" id="gvBook_LinkButton1_2" href="javascript:__doPostBack(&#39;gvBook$ctl04$LinkButton1&#39;,&#39;&#39;)">删除</a>                   
+                    </td>
+		</tr><tr>
+			<td>外国名著</td><td>9787515907208</td><td>爱丽丝梦游仙境</td><td>66</td><td>0.5</td><td>7</td><td style="width:100px;">
+                        <a href='BookEdit.aspx?BookId=87'>编辑</a>
+                        <a onclick="return confirm(&#39;确定要删除吗？&#39;);" id="gvBook_LinkButton1_3" href="javascript:__doPostBack(&#39;gvBook$ctl05$LinkButton1&#39;,&#39;&#39;)">删除</a>                   
+                    </td>
+		</tr><tr>
+			<td>外国名著</td><td>9787515907666</td><td>悲惨世界</td><td>78</td><td>0.5</td><td>34</td><td style="width:100px;">
+                        <a href='BookEdit.aspx?BookId=86'>编辑</a>
+                        <a onclick="return confirm(&#39;确定要删除吗？&#39;);" id="gvBook_LinkButton1_4" href="javascript:__doPostBack(&#39;gvBook$ctl06$LinkButton1&#39;,&#39;&#39;)">删除</a>                   
+                    </td>
+		</tr><tr>
+			<td>外国名著</td><td>9787515907000</td><td>小公主</td><td>11</td><td>0.5</td><td>20</td><td style="width:100px;">
+                        <a href='BookEdit.aspx?BookId=85'>编辑</a>
+                        <a onclick="return confirm(&#39;确定要删除吗？&#39;);" id="gvBook_LinkButton1_5" href="javascript:__doPostBack(&#39;gvBook$ctl07$LinkButton1&#39;,&#39;&#39;)">删除</a>                   
+                    </td>
+		</tr><tr>
+			<td>外国名著</td><td>9787515907024</td><td>老人与海</td><td>34</td><td>0.5</td><td>11</td><td style="width:100px;">
+                        <a href='BookEdit.aspx?BookId=84'>编辑</a>
+                        <a onclick="return confirm(&#39;确定要删除吗？&#39;);" id="gvBook_LinkButton1_6" href="javascript:__doPostBack(&#39;gvBook$ctl08$LinkButton1&#39;,&#39;&#39;)">删除</a>                   
+                    </td>
+		</tr><tr>
+			<td>外国名著</td><td>9787515906973</td><td>绿野仙踪</td><td>67</td><td>0.5</td><td>10</td><td style="width:100px;">
+                        <a href='BookEdit.aspx?BookId=83'>编辑</a>
+                        <a onclick="return confirm(&#39;确定要删除吗？&#39;);" id="gvBook_LinkButton1_7" href="javascript:__doPostBack(&#39;gvBook$ctl09$LinkButton1&#39;,&#39;&#39;)">删除</a>                   
+                    </td>
+		</tr><tr>
+			<td>外国名著</td><td>9787515907246</td><td>简&#183;爱</td><td>56</td><td>0.5</td><td>22</td><td style="width:100px;">
+                        <a href='BookEdit.aspx?BookId=82'>编辑</a>
+                        <a onclick="return confirm(&#39;确定要删除吗？&#39;);" id="gvBook_LinkButton1_8" href="javascript:__doPostBack(&#39;gvBook$ctl10$LinkButton1&#39;,&#39;&#39;)">删除</a>                   
+                    </td>
+		</tr><tr>
+			<td>外国名著</td><td>9787515907512</td><td>安妮日记</td><td>44</td><td>0.5</td><td>24</td><td style="width:100px;">
+                        <a href='BookEdit.aspx?BookId=81'>编辑</a>
+                        <a onclick="return confirm(&#39;确定要删除吗？&#39;);" id="gvBook_LinkButton1_9" href="javascript:__doPostBack(&#39;gvBook$ctl11$LinkButton1&#39;,&#39;&#39;)">删除</a>                   
+                    </td>
+		</tr>
+	</table>
+</div>
+    </div>
+    <div>
+        
+<style type="text/css">
+    #lbtPageCallBack{ width:0px; height:0px; display:block; overflow:hidden;}
+</style>
+<script type="text/javascript">
+    function buttonPageChange(page, totalPage) {
+        var resultPage = 0;
+        if (isNaN(page)) {
+            resultPage = 1;
+        }
+        else {
+            page = parseInt(page);
+            if (page < 1)
+                resultPage = 1;
+            if (page > totalPage)
+                resultPage = totalPage;
+            else
+                resultPage = page;
+        }
+        document.getElementById("txtPage").value = resultPage;
+        document.getElementById("hdPage").value = resultPage;
+        document.getElementById("lbtPageCallBack").click();
+    }
+    function pageChange(page) {
+        document.getElementById("hdPage").value = page;
+        document.getElementById("lbtPageCallBack").click();
+    }
+</script>
+<input type="hidden" name="numPage$hdPage" id="hdPage" value="1" />
+<input type="hidden" name="numPage$hdPageSize" id="numPage_hdPageSize" value="10" />
+<input type="hidden" name="numPage$hdRecordCount" id="numPage_hdRecordCount" value="1" />
+<input type="hidden" name="numPage$hdPageCount" id="numPage_hdPageCount" value="1" />
+<a id="lbtPageCallBack" href="javascript:__doPostBack(&#39;numPage$lbtPageCallBack&#39;,&#39;&#39;)">超链接回调</a>
+<div id="numPage_divPage"><style type="text/css">.pagek{display:inline; font-size:12px; padding:6px 0px; border:solid 1px #dddddd; margin:2px;} .pagea{ font-size:12px; text-decoration:none; color:#000000; margin-left:10px; margin-right:10px;} .pagenoa{font-size:12px; text-decoration:none; color:#999999; margin-left:10px; margin-right:10px;} </style><div style="height:30px; line-height:30px; text-align:center; clear:both;"> <div class='pagek'><span class='pagenoa'>首页</span></div> <div class='pagek'><span class='pagenoa'>上一页</span></div> <div class='pagek'><span class='pagenoa'>...</span></div> <div class='pagek' style='background-color:#318BCA;'><span class='pagenoa' style='color:#ffffff;'>1</span></div><div class='pagek'><a class='pagea' href='javascript:pageChange(2)'>2</a></div><div class='pagek'><a class='pagea' href='javascript:pageChange(3)'>3</a></div><div class='pagek'><a class='pagea' href='javascript:pageChange(4)'>4</a></div><div class='pagek'><a class='pagea' href='javascript:pageChange(5)'>5</a></div><div class='pagek'><a class='pagea' href='javascript:pageChange(6)'>6</a></div><div class='pagek'><a class='pagea' href='javascript:pageChange(7)'>7</a></div><div class='pagek'><a class='pagea' href='javascript:pageChange(8)'>8</a></div><div class='pagek'><a class='pagea' href='javascript:pageChange(9)'>9</a></div> <div class='pagek'><span class='pagenoa'>...</span></div> <div class='pagek'><a class='pagea' href='javascript:pageChange(2)'>下一页</a></div> <div class='pagek'><a class='pagea' href='javascript:pageChange(9)'>末页</a></div> </div><div style="height:30px; line-height:30px; text-align:center; clear:both;"> 共 <span style="color:red">89</span> 条记录&nbsp;当前<span style="color:red">1</span>/<span style="color:red">9</span>页&nbsp;<span style="color:red">10</span>条记录/页 </div></div>
+    </div>
+    </form>
+</body>
+</html>

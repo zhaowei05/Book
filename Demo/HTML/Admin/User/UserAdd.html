@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>用户添加</title>
+		<link href="../css/css.css" rel="stylesheet" type="text/css" />
+
+	</head>
+	<body>
+        <table style="width:800px; margin-top:0px;" class="MyTable">
+            <tr class="titletr"><td colspan="2" style="text-align:center;">用户添加</td></tr>
+            <tr>
+                <td class="lefttd">用户角色:</td>
+                <td>
+					<select name="ddlRole" id="ddlRole">
+						<option value="">--请选择--</option>
+						<option value="1">超级管理员</option>
+						<option value="2">书籍资料管理员</option>
+					
+					</select>
+                    <span id="spanRole" style=" color:Red;"></span>
+                </td>
+            </tr>
+            <tr>
+                <td class="lefttd">用户名:</td>
+                <td>
+                    <input name="txtAccount" type="text" id="txtAccount" />
+                    <input type="button" value="检查用户名" id="btCheckAccount" />
+                    <span id="spanAccount" style=" color:Red;"></span>
+                </td>
+            </tr>
+            <tr>
+                <td class="lefttd">密码:</td>
+                <td>
+                    <input name="txtPwd" type="password" id="txtPwd" />
+                    <span id="spanPwd" style=" color:Red;"></span>
+                </td>
+            </tr>
+            <tr>
+                <td class="lefttd">真实姓名:</td>
+                <td>
+                    <input name="txtRealName" type="text" id="txtRealName" />
+                    <span id="spanRealName" style=" color:Red;"></span>
+                </td>
+            </tr>
+            <tr>
+                <td class="lefttd">联系电话:</td>
+                <td>
+                    <input name="txtPhone" type="text" id="txtPhone" />
+                    <span id="spanPhone" style=" color:Red;"></span>
+                </td>
+            </tr>
+            <tr>
+                <td class="lefttd">&nbsp;</td>
+                <td>
+                    <input type="submit" name="btAdd" value="新增用户" id="btAdd" />
+                    
+                </td>
+            </tr>
+        </table>
+	</body>
+</html>

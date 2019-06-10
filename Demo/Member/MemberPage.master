@@ -1,0 +1,44 @@
+﻿<%@ Master Language="C#" MasterPageFile="~/MasterPage.Master" AutoEventWireup="true" CodeBehind="MemberPage.master.cs" Inherits="Demo.Member.MemberPage" %>
+<asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
+        <link href="../css/css.css" rel="stylesheet" type="text/css" />
+	    <link href="../css/master.css" rel="stylesheet" type="text/css" />
+	    <link href="../css/member.css" rel="stylesheet" type="text/css" />
+	    <script src="../js/jquery.js" type="text/javascript"></script>
+	    <script type="text/javascript">
+	        $(function () {
+	            $("#divAllType").click(function () {
+	                $("#divTypeShow").show();
+	            })
+	            $("#divAllType").mouseleave(function () {
+	                $("#divTypeShow").hide();
+	            })
+	        })
+	    </script> 
+     <asp:ContentPlaceHolder runat="server" ID="ContentPlaceHolder1">
+
+     </asp:ContentPlaceHolder>
+</asp:Content>
+<asp:Content ID="Content2" ContentPlaceHolderID="Mian" runat="server">
+    <div>
+		<div style=" height:auto; overflow:hidden; background-color:#f6f6f6;">
+		    <div style=" width:1200px; margin:0px auto;  clear:both; height:auto; overflow:hidden;">
+		        <div id="memLeft">
+		            <ul>
+		                <li><a href="../Member/OrderList.aspx">订单中心</a></li>
+		                <li><a href="../Member/SelfInfo.aspx">基本信息维护</a></li>
+		                <li><a href="../Member/SelfPwd.aspx">密码修改</a></li>
+		                <li>
+                            <asp:LinkButton ID="LinkEnd" runat="server" OnClick="LinkEnd_Click">退出书城</asp:LinkButton>
+		                </li>
+		            </ul>
+		        </div>
+		
+		        <asp:ContentPlaceHolder runat="server" ID="Right">
+
+                </asp:ContentPlaceHolder>
+		          
+		    </div>
+		</div>
+    </div>
+    
+</asp:Content>

@@ -1,0 +1,188 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+    <style>
+        #fyeuk {
+            height: 20px;
+            margin: 10px auto;
+            text-align: center;
+            position: relative;
+            display: inline-block;
+            left: 50%;
+        }
+
+        .clear {
+            clear: both;
+        }
+
+        #fyeuk > div {
+            height: 20px;
+            float: left;
+        }
+
+        #xyiz {
+            text-align: center;
+            margin-left: 42px;
+            margin-right: 42px;
+        }
+
+        .fol_a2 {
+            position: absolute;
+            left: 93%;
+            top: 0px;
+            display: block;
+            height: 100%;
+            width: 30px;
+            text-decoration: none;
+            border: solid 1px #1f80d8;
+            text-align: center;
+            line-height: 20px;
+            border-radius: 4px;
+        }
+
+        .fol_a1 {
+            position: absolute;
+            right: 93%;
+            display: block;
+            height: 100%;
+            width: 30px;
+            text-decoration: none;
+            border: solid 1px #1f80d8;
+            text-align: center;
+            line-height: 20px;
+            border-radius: 4px;
+        }
+
+        #xyiz > a {
+            display: block;
+            float: left;
+            width: auto;
+            margin-left: 3px;
+            margin-right: 3px;
+            text-align: center;
+            line-height: 20px;
+        }
+
+        .bia {
+            text-decoration: underline;
+            color: #000000;
+        }
+
+        .bia2 {
+            text-decoration: none;
+        }
+    </style>
+
+    <script src="jquery-1.10.2.min.js"></script>
+    <script>
+        $(function () {
+	//当前页码
+            var no = 1;
+	//一页多少数据
+            var size = 5;
+	//多少页
+            var ye = 0;
+	//多少数据
+            count = 1000;
+            mgfkbin(count);
+	//数据刷新绑定
+            function mgfkbin(count) {
+                ye = Math.ceil(count / size);
+                $("#xyiz").html("");
+                var str = "";
+                if (no < 7) {
+                    var fot = Math.ceil(no) + 4;
+                    fot == ye - 1 ? fot = fot + 1 : fot;
+                    fot >= ye ? fot = ye : fot;
+                    for (var i = 1; i <= fot; i++) {
+                        if (i == no)
+                            str += "<a href='javascript:void(0)' class='bia'>" + i + "</a>";
+                        else
+                            str += "<a href='javascript:void(0)' class='bia2'>" + i + "</a>";
+                    }
+                    if (fot + 1 < ye) {
+                        str += "<a class='bia2'>...</a>";
+                        str += "<a href='javascript:void(0)' class='bia2'>" + ye + "</a>";
+                    }
+                }
+                else if (no >= ye - 5) {
+                    var kos = Math.ceil(no) - 4;
+                    var fot = Math.ceil(no) + 4;
+                    fot == ye - 1 ? fot = fot + 1 : fot;
+                    fot >= ye ? fot = ye : fot;
+                    if (kos - 1 >= 1) {
+                        str += "<a href='javascript:void(0)' class='bia2'>" + 1 + "</a>";
+                        str += "<a class='bia2'>...</a>";
+                    }
+                    for (var i = kos; i <= fot; i++) {
+                        if (i == no)
+                            str += "<a href='javascript:void(0)' class='bia'>" + i + "</a>";
+                        else
+                            str += "<a href='javascript:void(0)' class='bia2'>" + i + "</a>";
+                    }
+                }
+                else {
+                    var kos = Math.ceil(no) - 4;
+                    var fot = Math.ceil(no) + 4;
+                    str += "<a href='javascript:void(0)' class='bia2'>" + 1 + "</a>";
+                    str += "<a class='bia2'>...</a>";
+                    for (var i = kos; i <= fot; i++) {
+                        if (i == no)
+                            str += "<a href='javascript:void(0)' class='bia'>" + i + "</a>";
+                        else
+                            str += "<a href='javascript:void(0)' class='bia2'>" + i + "</a>";
+                    }
+                    str += "<a class='bia2'>...</a>";
+                    str += "<a href='javascript:void(0)' class='bia2'>" + ye + "</a>";
+                }
+                $("#xyiz").html(str);
+            }
+	//下上按钮响应
+            $(".fol_a>a").click(function () {
+                //下一页
+                if ($(this).html() == "&gt;&gt;") {
+                    if (ye == no)
+                        return;
+                    no = Math.ceil(no) + 1;
+                }
+                //上一页
+                if ($(this).html() == "&lt;&lt;") {
+                    if (no == 1)
+                        return;
+                    no = Math.ceil(no) - 1;
+                }
+	//重新绑定
+                mgfkbin(count);
+            })
+	//数字选择按钮响应
+            $("#xyiz").on("click", "a", function () {
+                var hh = $(this).html();
+                if (no == hh)
+                    return;
+                no = hh;
+	//重新绑定
+                mgfkbin(count);
+            })
+        })
+    </script>
+</head>
+<body>
+
+    <div style="width:80%;display:inline-block;">
+        <div id="fyeuk">
+            <div class="fol_a">
+                <a href="javascript:void(0)" class="fol_a1"><<</a>
+            </div>
+            <div id="xyiz">
+
+            </div>
+            <div class="fol_a">
+                <a href="javascript:void(0)" class="fol_a2">>></a>
+            </div>
+        </div>
+
+    </div>
+</body>
+</html>

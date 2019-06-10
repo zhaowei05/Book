@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+	    <title></title>
+	    <link href="../css/css.css" rel="stylesheet" type="text/css" />
+	    <script src="../../js/jquery.js" type="text/javascript"></script>
+		<style type="text/css">
+		.bigmenu {
+			width: 170px;
+			height: 30px;
+			line-height: 30px;
+			border: solid 1px #808080;
+			border-width: 1px 0px 1px 0px;
+			margin: 8px 0px 0px 4px;
+			padding-left: 24px;
+			background-image: url(../img/sub_sys.gif);
+			background-repeat: no-repeat;
+			background-position: left center;
+		}
+		.smallmenu {
+			height: 26px;
+			line-height: 26px;
+			background-image: url(../img/folderclosed.gif);
+			background-repeat: no-repeat;
+			background-position: left center;
+			padding-left: 20px;
+			margin-left:20px;
+			display:none;
+		}
+	
+		a:link, a:hover, a:active, a:visited { color:#000000; text-decoration:none;}
+		</style>
+		<script type="text/javascript">
+	    $(document).ready(function () {
+	        $("#menu div").click(function () {
+	            var parentId = $(this).attr("id");
+	            var divmenus = $("#menu div");
+	            for (var i = 0; i < divmenus.length; i++) {
+	                if (divmenus[i].id.substr(0, parentId.length) == parentId) {
+	                    if (divmenus[i].id.length > parentId.length + 3)
+	                        $("#" + divmenus[i].id).hide();
+	                    if (divmenus[i].id.length == parentId.length + 3)
+	                        $("#" + divmenus[i].id).toggle(300);
+	                }
+	            }
+	        })
+	    })
+		</script>
+	</head>
+	<body style=" background:#c8f5ff; ">
+        <div id="menu">
+            
+            <div id="menu001" class="bigmenu"><a href="../Member/MemberList.html" target="right">会员管理</a></div>
+                
+            <div id="menu002" class="bigmenu"><a href="javascript:void(0);" target="right">商品管理</a></div>
+                
+                    <div id="menu002001" class="smallmenu">
+                        <a href="../Book/BookTypeList.html" target="right">商品类型管理</a>
+                    </div>
+                
+                    <div id="menu002002" class="smallmenu">
+                        <a href="../Book/BookList.html" target="right">商品信息管理</a>
+                    </div>
+                
+            <div id="menu003" class="bigmenu"><a href="../Order/OrderList.html" target="right">订单管理</a></div>
+                
+            <div id="menu998" class="bigmenu"><a href="javascript:void(0);" target="right">个人中心</a></div>
+                
+                    <div id="menu998001" class="smallmenu">
+                        <a href="../Self/InfoEdit.html" target="right">基本信息</a>
+                    </div>
+                
+                    <div id="menu998002" class="smallmenu">
+                        <a href="../Self/PwdEdit.html" target="right">密码维护</a>
+                    </div>
+                
+            <div id="menu999" class="bigmenu"><a href="javascript:void(0);" target="right">系统管理</a></div>
+                
+                    <div id="menu999001" class="smallmenu">
+                        <a href="../Role/RoleList.html" target="right">角色管理</a>
+                    </div>
+                
+                    <div id="menu999002" class="smallmenu">
+                        <a href="../User/UserList.html" target="right">用户管理</a>
+                    </div>
+                
+
+        </div>
+
+	</body>
+</html>

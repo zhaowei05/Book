@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>订单查询</title>
+		<link href="../css/css.css" rel="stylesheet" type="text/css" />
+		<link href="../css/jquery-ui.css" rel="stylesheet" type="text/css" />
+    	<script src="../../js/jquery.js" type="text/javascript"></script>
+    	<script src="../../js/jquery-ui.js" type="text/javascript"></script>
+    	<script src="../../js/jquery.ui.datepicker-zh-CN.js" type="text/javascript"></script>
+	    <script type="text/javascript">
+	        $(function(){
+	            //加载时间选择控件
+				$("#txtStart").datepicker({inline: true,
+						changeMonth:true, //显示选择月份的下拉列表
+						changeYear:true,//显示选择年份的下拉列表
+						showOtherMonths: true, //显示上月和下月空出来的日期
+						selectOtherMonths: true, //可以显示上月和下月空出来的日期
+						showWeek:false,//显示日期对应的星期
+						//showButtonPanel:true,//显示"关闭"按钮面板
+						//closeText:"关闭",//设置关闭按钮的文本
+						yearRange:'1950:2020',//设置年份的范围
+						dateFormat:'yy-mm-dd',//设置显示在文本框中的日期格式
+						//showAnim:"slideDown"//设置显示或隐藏日期选择窗口的方式。可以设置的方式有："show"、"slideDown"、"fadeIn"
+	            });
+	//            if($("#txtStart").val() == "")
+	//                $("#txtStart").datepicker('setDate',new Date(new Date().getFullYear(),new Date().getMonth(),1));
+	
+				$("#txtEnd").datepicker({inline: true,
+						changeMonth:true, //显示选择月份的下拉列表
+						changeYear:true,//显示选择年份的下拉列表
+						showOtherMonths: true, //显示上月和下月空出来的日期
+						selectOtherMonths: true, //可以显示上月和下月空出来的日期
+						showWeek:false,//显示日期对应的星期
+						//showButtonPanel:true,//显示"关闭"按钮面板
+						//closeText:"关闭",//设置关闭按钮的文本
+						yearRange:'1950:2020',//设置年份的范围
+						dateFormat:'yy-mm-dd',//设置显示在文本框中的日期格式
+						//showAnim:"slideDown"//设置显示或隐藏日期选择窗口的方式。可以设置的方式有："show"、"slideDown"、"fadeIn"     
+	            }); 
+	//            if($("#txtEnd").val() == "")
+	//                $("#txtEnd").datepicker('setDate',new Date());  
+	        })
+	
+	    </script>
+
+	</head>
+	<body>
+    	<div style=" height:30px; line-height:30px; text-align:center;">
+        	开始时间:<input name="txtStart" type="text" value="2018-12-01" id="txtStart" />
+        	结束时间:<input name="txtEnd" type="text" value="2018-12-29" id="txtEnd" />
+        	订单状态:<select name="ddlStatus" id="ddlStatus">
+						<option selected="selected" value="0">所有订单</option>
+						<option value="1">新订单</option>
+						<option value="2">发货中</option>
+						<option value="3">等待收货</option>
+						<option value="4">已收货</option>
+						<option value="5">用户删除</option>
+				</select>
+        <input type="submit" name="btSearch" value="搜索" id="btSearch" />
+    	</div>
+        <div>
+			<table class="MyTable" cellspacing="0" rules="all" border="1" id="gvOrder" style="width:98%;border-collapse:collapse;">
+				<tr class="titletr">
+					<th scope="col">订单号</th><th scope="col">会员</th><th scope="col">总金额</th><th scope="col">收货人</th><th scope="col">联系电话</th><th scope="col">收货地址</th><th scope="col">订单时间</th><th scope="col">订单状态</th><th scope="col">操作</th>
+				</tr><tr>
+					<td>201812060522483</td><td>zhoujielun</td><td>29.5</td><td>周杰伦</td><td>13525478544</td><td>武汉市青山区东湖5号</td><td>2018-12-06 05:23:00</td><td>新订单</td><td style="width:160px;">
+		                        <a href='OrderDetail.html'>订单明细</a>
+		                        <a id="gvOrder_lbEdit_0" href="javascript:__doPostBack(&#39;gvOrder$ctl02$lbEdit&#39;,&#39;&#39;)">订单状态</a>
+		                        <a onclick="return confirm(&#39;确定要删除吗？&#39;);" id="gvOrder_LinkButton1_0" href="javascript:__doPostBack(&#39;gvOrder$ctl02$LinkButton1&#39;,&#39;&#39;)">删除</a>                   
+		                    </td>
+				</tr><tr>
+					<td>201812060522323</td><td>zhoujielun</td><td>44.5</td><td>周杰伦</td><td>13525478544</td><td>武汉市青山区东湖5号</td><td>2018-12-06 05:23:00</td><td>新订单</td><td style="width:160px;">
+		                        <a href='OrderDetail.html'>订单明细</a>
+		                        <a id="gvOrder_lbEdit_1" href="javascript:__doPostBack(&#39;gvOrder$ctl03$lbEdit&#39;,&#39;&#39;)">订单状态</a>
+		                        <a onclick="return confirm(&#39;确定要删除吗？&#39;);" id="gvOrder_LinkButton1_1" href="javascript:__doPostBack(&#39;gvOrder$ctl03$LinkButton1&#39;,&#39;&#39;)">删除</a>                   
+		                    </td>
+				</tr>
+			</table>
+		</div>
+		<div id="numPage_divPage"><style type="text/css">.pagek{display:inline; font-size:12px; padding:6px 0px; border:solid 1px #dddddd; margin:2px;} .pagea{ font-size:12px; text-decoration:none; color:#000000; margin-left:10px; margin-right:10px;} .pagenoa{font-size:12px; text-decoration:none; color:#999999; margin-left:10px; margin-right:10px;} </style><div style="height:30px; line-height:30px; text-align:center; clear:both;"> <div class='pagek'><span class='pagenoa'>首页</span></div> <div class='pagek'><span class='pagenoa'>上一页</span></div> <div class='pagek'><span class='pagenoa'>...</span></div> <div class='pagek'><span class='pagenoa'>1</span></div> <div class='pagek'><span class='pagenoa'>...</span></div> <div class='pagek'><span class='pagenoa'>下一页</span></div> <div class='pagek'><span class='pagenoa'>末页</span></div> </div><div style="height:30px; line-height:30px; text-align:center; clear:both;"> 共 <span style="color:red">2</span> 条记录&nbsp;当前<span style="color:red">1</span>/<span style="color:red">1</span>页&nbsp;<span style="color:red">10</span>条记录/页 </div></div>
+	</body>
+</html>

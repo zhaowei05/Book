@@ -1,0 +1,16 @@
+/* CSS Document */
+body{ font-size:14px; margin:0px; padding:0px;}
+body,table,tr,td,div,ul,li,form{ margin:0px; padding:0px;}
+div{ height:auto; overflow:hidden;}
+img{ border:solid 0px #FFFFFF; margin:0px; padding:0px;}
+.MyTable{border-collapse: collapse; margin:6px auto 6px auto;}
+.MyTable td,.MyTable tr,.MyTable th{border: 1px solid #b5d6e6; height:22px; line-height:22px; padding:6px;}
+.boldtitle { font-size:14px; font-weight:bold; text-align:center;}
+.lefttd { width:200px; text-align:right;}
+.titletr { background-image:url(../img/titlebg.jpg); font-weight:bold;}
+.redcolor { color:#ff0000;}
+.hover{background-color: #4196B3;}
+.divtitle{ border:solid 1px #76abba; font-weight:bold; line-height:22px; height:22px; padding:6px; background-image:url(../img/titlebg.jpg); margin:6px auto 6px auto; text-align:center;}
+.divpage{clear:both;border-style:solid; border-color:#b5d6e6; border-width:1px 0px 1px 0px; line-height:30px; height:30px;text-align:center;margin-top:6px;}
+
+

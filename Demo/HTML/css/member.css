@@ -1,0 +1,63 @@
+﻿#memLeft{ width:256px; float:left; background-color:White; height:700px; overflow:visible;}
+#memRight{ width:924px; float:left; margin:10px; background-color:White; height:auto; overflow:visible;}
+#memLeft ul{ padding:5px 20px 5px 20px;}
+#memLeft li{ height:50px; line-height:50px; margin-left:20px;}
+#memLeft li a{ font-size:16px; color:Black; font-weight:bold; text-decoration:none;}
+.rightTopTitle{font-size:16px; font-weight:bold; font-family:"Microsoft YaHei"; color:White; 
+                height:40px; line-height:40px; padding-left:8px; background-color:#ff2832;}
+/*订单中心*/
+#memOrder{ width:900px; margin:12px;}
+.orderItem{ width:900px; border:solid 1px #e5e5e5; border-bottom-width:0px; 
+            height:auto; overflow:hidden; margin-bottom:10px;}
+.orderTitle{ width:900px; height:30px; background-color:#f5f5f5;}
+.orderTitle li{ width:180px; float:left; height:30px; line-height:30px;}
+.orderTime{ margin-left:10px;}
+.orderDelete a{ color:Black; text-decoration:none;}
+
+.detailItem{ clear:both; height:auto; overflow:hidden; border-bottom:solid 1px #efefef;}
+.detailItem .detailImg{ width:90px; height:90px;  float:left;}
+.detailItem .detailImg img{ width:60px; height:70px; margin:10px; border:solid 1px #efefef;}
+.detailItem .detailBookName{ width:280px; float:left;  height:90px; border-right:solid 1px#efefef;}
+.detailItem .detailBookName div{ padding-top:20px; line-height:26px;}
+
+.detailItem .detailCount{ width:130px; float:left; height:90px; border-right:solid 1px#efefef;}
+.detailItem .detailCount div{ padding-top:20px; padding-left:20px; line-height:26px;}
+.detailItem .detailOnePrice{ width:130px; float:left; height:90px; border-right:solid 1px#efefef;}
+.detailItem .detailOnePrice div{ padding-top:20px; padding-left:20px; line-height:26px;}
+.detailItem .detailAllPrice{ width:130px; float:left; height:90px; border-right:solid 1px#efefef;}
+.detailItem .detailAllPrice div{ padding-top:20px; padding-left:20px; line-height:26px;}
+.detailItem .detailBuy{ width:130px; float:left; height:90px; }
+.detailItem .detailBuy div{ padding-top:20px; padding-left:20px; line-height:26px;}
+
+/*修改个人基本信息*/
+.basicInfoInputText{ width:300px; height:24px; font-size:14px; }
+#SelfInfo{ width:900px; margin:12px;}    
+#SelfInfo table{ width:900px;}
+#SelfInfo td{ height:30px; line-height:30px; font-size:16px; font-family:"Microsoft YaHei"; padding:6px;}
+#SelfInfo .infoLeftTd{  width:200px; text-align:right;}
+#SelfInfo .infoCenterTd{ width:300px;}
+#SelfInfo .infoRightTd{ width:350px; font-size:14px;}
+#SelfInfo a{ font-size:14px; text-decoration:none; color:Black;}
+#lbtnUpdateInfo{ display:block; width:200px; height:40px; line-height:40px; 
+          background-color:#ff2832;  
+         text-align:center;}
+#SelfInfo a.updateInfo{ color:White; font-family:"Microsoft YaHei"; font-size:18px;}
+
+/*修改密码*/
+.pwdInputText{ width:300px; height:24px; font-size:14px; }
+#SelfPwd{ width:900px; margin:12px;}    
+#SelfPwd table{ width:900px;}
+#SelfPwd td{ height:30px; line-height:30px; font-size:16px; font-family:"Microsoft YaHei"; padding:6px;}
+#SelfPwd .pwdLeftTd{  width:200px; text-align:right;}
+#SelfPwd .pwdCenterTd{width:300px;}
+#SelfPwd .pwdRightTd{ width:350px; font-size:14px;}
+#SelfPwd a{ font-size:14px; text-decoration:none; color:Black;}
+#lbtnUpdatePwd{ display:block; width:200px; height:40px; line-height:40px; 
+          background-color:#ff2832;  
+         text-align:center;}
+#SelfPwd a.updatePwd{ color:White; font-family:"Microsoft YaHei"; font-size:18px;}
+ 
+ 
+ 
+ 
+ 
